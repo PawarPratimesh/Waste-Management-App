@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Combined Login UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="left-panel">
+      <div class="layer1"></div>
+      <div class="layer2"></div>
+      <div class="cutout"></div>
+    </div>
+    <div class="right-panel">
+      <div class="logo"><img src="../assests/logo.png" alt="Logo" /></div>
+      <h2>LOG IN</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <span class="forgot-password">Forgot Password?</span>
+        <button type="submit" class="login-btn">LOGIN</button>
+      </form>
+      <p class="alt-login">Or Follow Us On</p>
+      <div class="social-login">
+        <img src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="Google" />
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+      </div>
+      <div class="signup-link">
+        <h3>Don't have an account?<br><a href="role-selection.html">Sign Up</a></h3>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="../js/login.js"></script>
+</body>
+</html>

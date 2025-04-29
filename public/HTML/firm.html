@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Waste Management</title>
+  <link rel="stylesheet" href="../css/firm.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <input type="text" id="firmName" placeholder="Firm Name" required />
+      <input type="email" id="email" placeholder="Company Email Address" required />
+      <input type="text" id="contactPerson" placeholder="Contact Person Name" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="text" id="address" placeholder="Office Address" required />
+      <input type="text" id="serviceAreas" placeholder="Service Areas (e.g., Baner, Hadapsar)" required />
+      <input type="text" id="operatingHours" placeholder="Operating Hours (e.g., 9 AM - 6 PM)" required />
+
+      <label>Type of Waste Collected:</label>
+      <div class="radio-group">
+        <label><input type="checkbox" name="wasteType" value="Plastic" /> Plastic</label>
+        <label><input type="checkbox" name="wasteType" value="Organic" /> Organic</label>
+        <label><input type="checkbox" name="wasteType" value="E-Waste" /> E-Waste</label>
+        <label><input type="checkbox" name="wasteType" value="Metal" /> Metal</label>
+        <label><input type="checkbox" name="wasteType" value="Glass" /> Glass</label>
+        <label><input type="checkbox" name="wasteType" value="Other" /> Other</label>
+      </div>
+      
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+  <script type="module" src="../js/signup-company.js"></script>
+</body>
+</html>

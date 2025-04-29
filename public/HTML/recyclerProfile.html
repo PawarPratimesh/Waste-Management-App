@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recycler Profile</title>
+  <link rel="stylesheet" href="../css/recyclerProfile.css">
+  <style>
+    .profile-summary {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 40px auto;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .profile-summary h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #033f3f;
+    }
+
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 8px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #333;
+      flex: 1;
+    }
+
+    .value {
+      flex: 2;
+      color: #555;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 30px;
+      background-color: #033f3f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      background-color: #025e5e;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="profile-summary">
+      <h2>You are a Recycler</h2>
+
+      <div class="profile-row"><span class="label">Company Name:</span> <span class="value" id="firmName">Loading...</span></div>
+      <div class="profile-row"><span class="label">Contact Person:</span> <span class="value" id="contactPerson">Loading...</span></div>
+      <div class="profile-row"><span class="label">Email:</span> <span class="value" id="email">Loading...</span></div>
+      <div class="profile-row"><span class="label">Phone Number:</span> <span class="value" id="phone">Loading...</span></div>
+      <div class="profile-row"><span class="label">Office Address:</span> <span class="value" id="address">Loading...</span></div>
+      <div class="profile-row"><span class="label">Service Areas:</span> <span class="value" id="serviceAreas">Loading...</span></div>
+      <div class="profile-row"><span class="label">Operating Hours:</span> <span class="value" id="operatingHours">Loading...</span></div>
+      <div class="profile-row"><span class="label">Waste Types:</span> <span class="value" id="wasteTypes">Loading...</span></div>
+
+      <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+    </div>
+  </div>
+
+  <!-- JS to Load Recycler Info (View Mode) -->
+  <script type="module">
+    import { auth, db } from "../js/firebase.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        alert("You are not logged in");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const docRef = doc(db, "recyclerFirms", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        document.getElementById("firmName").textContent = data.firmName || "N/A";
+        document.getElementById("contactPerson").textContent = data.contactPerson || "N/A";
+        document.getElementById("email").textContent = data.email || "N/A";
+        document.getElementById("phone").textContent = data.phone || "N/A";
+        document.getElementById("address").textContent = data.address || "N/A";
+        document.getElementById("serviceAreas").textContent = data.serviceAreas || "N/A";
+        document.getElementById("operatingHours").textContent = data.operatingHours || "N/A";
+        document.getElementById("wasteTypes").textContent = (data.wasteTypes || []).join(", ");
+      } else {
+        alert("⚠️ Profile data not found.");
+      }
+    });
+  </script>
+</body>
+</html>

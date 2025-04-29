@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #eafff0,#28ad89);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #111;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 30px 40px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}

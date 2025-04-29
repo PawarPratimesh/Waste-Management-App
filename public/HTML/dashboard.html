@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoWaste Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>EcoWaste</h1>
+      <nav>
+        <a href="#" id="profileLink">Profile</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Upload Waste</a>
+        <a href="#">Track Pickup</a>
+        <a href="#">Upload History</a>
+        <a href="#">Rewards</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Waste Awareness</a>
+      </nav>
+    </div>
+
+    <div class="main">
+      <div class="header">
+        <h2>Welcome, User</h2>
+        <button class="btn">Add Waste Info</button>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Total Pickups</h3>
+          <p>56 accepted</p>
+        </div>
+        <div class="card">
+          <h3>Pending Pickups</h3>
+          <p>8 pending</p>
+        </div>
+        <div class="card">
+          <h3>Completed Pickups</h3>
+          <p>48 completed</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Upload Waste</h3>
+        <form>
+          <input type="file" />
+          <textarea placeholder="Waste Description"></textarea>
+          <button class="btn">Upload</button>
+        </form>
+      </div>
+
+      <div class="section">
+        <h3>Track Waste Pickup</h3>
+        <p>Status: <strong>Accepted</strong></p>
+      </div>
+
+      <div class="section">
+        <h3>View Upload History</h3>
+        <ul>
+          <li>12 Apr - Plastic Bottles - Picked</li>
+          <li>10 Apr - E-Waste - Assigned</li>
+          <li>7 Apr - Organic - New</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Points & Rewards</h3>
+        <p>Gamified Score: <strong>1200 pts</strong></p>
+        <button class="btn">Redeem Points</button>
+      </div>
+
+      <div class="section">
+        <h3>Browse Waste Categories</h3>
+        <p>Organic | Plastic | E-Waste | Glass | Others</p>
+      </div>
+
+      <div class="section">
+        <h3>Profile</h3>
+        <form>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Address" />
+          <input type="tel" placeholder="Phone Number" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔽 Add this JS script at the end -->
+  <script type="module">
+    import { auth, db } from "../js/firebase.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+    const profileLink = document.getElementById("profileLink");
+
+    profileLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Please log in first.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (userDocSnap.exists()) {
+        const userType = userDocSnap.data().userType;
+
+        if (userType === "wasteGenerator") {
+          window.location.href = "generatorProfile.html";
+        } else if (userType === "recyclerFirm") {
+          window.location.href = "recyclerProfile.html";
+        } else {
+          alert("Unknown user type.");
+        }
+      } else {
+        alert("User data not found.");
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste Generator Profile</title>
+  <link rel="stylesheet" href="../css/generatorProfile.css" />
+  <style>
+    .profile-summary {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 40px auto;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .profile-summary h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #022c22;
+    }
+
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 8px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #333;
+      flex: 1;
+    }
+
+    .value {
+      flex: 2;
+      color: #555;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 30px;
+      background-color: #022c22;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      background-color: #011b1b;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="profile-summary">
+      <h2>You are a Waste Generator</h2>
+
+      <div class="profile-row"><span class="label">First Name:</span> <span class="value" id="firstName">Loading...</span></div>
+      <div class="profile-row"><span class="label">Last Name:</span> <span class="value" id="lastName">Loading...</span></div>
+      <div class="profile-row"><span class="label">Email:</span> <span class="value" id="email">Loading...</span></div>
+      <div class="profile-row"><span class="label">Phone Number:</span> <span class="value" id="phone">Loading...</span></div>
+      <div class="profile-row"><span class="label">Address:</span> <span class="value" id="address">Loading...</span></div>
+      <div class="profile-row"><span class="label">Nation:</span> <span class="value" id="nation">Loading...</span></div>
+      <div class="profile-row"><span class="label">Gender:</span> <span class="value" id="gender">Loading...</span></div>
+      <div class="profile-row"><span class="label">Date of Birth:</span> <span class="value" id="dob">Loading...</span></div>
+
+      <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+    </div>
+  </div>
+
+  <!-- 🔽 Load Data Only (No Edit) -->
+  <script type="module">
+    import { auth, db } from "../js/firebase.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        alert("You are not logged in");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const docRef = doc(db, "wasteGenerators", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+
+        document.getElementById("firstName").textContent = data.firstName || "N/A";
+        document.getElementById("lastName").textContent = data.lastName || "N/A";
+        document.getElementById("email").textContent = data.email || "N/A";
+        document.getElementById("phone").textContent = data.phone || "N/A";
+        document.getElementById("address").textContent = data.address || "N/A";
+        document.getElementById("nation").textContent = data.nation || "N/A";
+        document.getElementById("gender").textContent = data.gender || "N/A";
+        document.getElementById("dob").textContent = data.dob || "N/A";
+      } else {
+        alert("⚠️ Profile data not found.");
+      }
+    });
+  </script>
+</body>
+</html>
