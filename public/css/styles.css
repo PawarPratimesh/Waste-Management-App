@@ -1,0 +1,105 @@
+/* Main Styles */
+body {
+  background: linear-gradient(135deg, #0b8a6d 0%, #90d869 100%);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0.5rem 2rem;
+  border-radius: 50px;
+  margin: 1rem auto 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #0b8a6d;
+  letter-spacing: 1px;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Typography */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: #222;
+  position: relative;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #0b8a6d;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #0b8a6d;
+  font-weight: 700;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #0b8a6d;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #0b8a6d;
+}

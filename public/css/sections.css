@@ -1,0 +1,230 @@
+/* Section Styles */
+.section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.section-content {
+  padding: 2rem;
+}
+
+/* Why Education Section */
+#why-education {
+  border-top: 5px solid #0b8a6d;
+}
+
+/* Types of Waste Section */
+.waste-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.waste-type {
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.waste-type:hover {
+  transform: translateY(-3px);
+}
+
+/* Environmental Impact Section */
+#environmental-impact {
+  border-top: 5px solid #e74c3c;
+}
+
+.impact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.impact-item {
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.impact-item:hover {
+  transform: translateY(-3px);
+}
+
+/* Waste Segregation Section */
+#waste-segregation {
+  border-top: 5px solid #3498db;
+}
+
+.bins-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.bin {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.bin:hover {
+  transform: translateY(-3px);
+}
+
+.bin-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.green-bin .bin-color {
+  background-color: #2ecc71;
+}
+
+.blue-bin .bin-color {
+  background-color: #3498db;
+}
+
+.red-bin .bin-color {
+  background-color: #e74c3c;
+}
+
+.black-bin .bin-color {
+  background-color: #333;
+}
+
+/* 3Rs Section */
+#three-rs {
+  border-top: 5px solid #f1c40f;
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.principle {
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.principle:hover {
+  transform: translateY(-3px);
+}
+
+.principle ul {
+  margin-top: 0.5rem;
+}
+
+.principle li {
+  margin-bottom: 0.5rem;
+}
+
+/* Composting Section */
+#composting {
+  border-top: 5px solid #27ae60;
+}
+
+.composting-info {
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem 0;
+}
+
+.composting-info ul {
+  margin-top: 0.5rem;
+}
+
+.composting-info li {
+  margin-bottom: 0.5rem;
+}
+
+/* Myths Section */
+#myths {
+  border-top: 5px solid #9b59b6;
+}
+
+.myths {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.myth {
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.myth:hover {
+  transform: translateY(-3px);
+}
+
+.myth-false {
+  color: #e74c3c;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.myth-true {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+/* Did You Know Section */
+#did-you-know {
+  border-top: 5px solid #e67e22;
+}
+
+.facts-section {
+  text-align: center;
+}
+
+.global-facts {
+  margin: 1.5rem 0;
+}
+
+.global-facts p {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.global-facts p:hover {
+  transform: translateY(-3px);
+}

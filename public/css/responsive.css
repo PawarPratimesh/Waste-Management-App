@@ -1,0 +1,163 @@
+/* Responsive Styles */
+
+/* Base responsive adjustments */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-content {
+    padding: 1.5rem;
+  }
+  
+  .waste-types,
+  .impact-list,
+  .bins-container,
+  .principles {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  header {
+    padding: 1.5rem 0 2rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .logo {
+    padding: 0.3rem 1.5rem;
+    margin: 0.8rem auto 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .intro-text {
+    font-size: 1rem;
+  }
+  
+  main {
+    gap: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  .section-content {
+    padding: 1.2rem;
+  }
+  
+  .waste-types,
+  .impact-list,
+  .bins-container,
+  .principles {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .waste-type,
+  .impact-item,
+  .bin,
+  .principle,
+  .myth,
+  .composting-info,
+  .fact-box {
+    padding: 1rem;
+  }
+  
+  .quote {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  h3 {
+    font-size: 1rem;
+  }
+  
+  .fact-icon {
+    font-size: 1.5rem;
+  }
+  
+  .fact-box {
+    flex-direction: column;
+  }
+  
+  .fact-icon {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+}
+
+/* Animation adjustments for smaller screens */
+@media (max-width: 768px) {
+  .section {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Print styles for better printing */
+@media print {
+  body {
+    background: none;
+    color: black;
+  }
+  
+  .section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  .fact-box,
+  .waste-type,
+  .impact-item,
+  .bin,
+  .principle,
+  .myth,
+  .composting-info {
+    box-shadow: none;
+    border: 1px solid #eee;
+  }
+}
