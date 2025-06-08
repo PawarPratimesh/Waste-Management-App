@@ -25,12 +25,11 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       const userData = userDocSnap.data();
       const userType = userData.userType;
 
-      
-
+      // 🔁 Redirect based on user type
       if (userType === "wasteGenerator") {
-        window.location.href = "../HTML/dashboard.html";
+        window.location.href = "../HTML/wasteGeneratorDashboard.html";
       } else if (userType === "recyclerFirm") {
-        window.location.href = "../HTML/dashboard.html";
+        window.location.href = "../HTML/recyclerDashboard.html";
       } else {
         alert("⚠ Unknown user type.");
       }
