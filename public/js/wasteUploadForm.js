@@ -2,6 +2,12 @@
 import { db } from "./firebase.js";
 import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
+// Import Firebase Auth
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+// Get Auth instance
+const auth = getAuth();
+
 // Elements
 const uploadBtn = document.getElementById("uploadWidgetBtn");
 const uploadStatus = document.getElementById("uploadStatus");
@@ -64,6 +70,13 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  // Get current logged-in user
+  const user = auth.currentUser;
+  if (!user) {
+    alert("You must be logged in to submit waste data.");
+    return;
+  }
+
   const formData = {
     imageUrl: imageUrlField.value,
     description: form.wasteDescription.value.trim(),
@@ -71,6 +84,7 @@ form.addEventListener("submit", async (e) => {
     latitude: form.latitude.value || null,
     longitude: form.longitude.value || null,
     timestamp: serverTimestamp(),
+    uid: user.uid,  // Add UID here
   };
 
   try {

@@ -31,7 +31,6 @@ function createCard(data, id) {
   const status = data.status === "Picked" ? "Picked" : "Available";
   const timestamp = data.timestamp && data.timestamp.toDate ? data.timestamp.toDate() : null;
   const time = timeAgo(timestamp);
-
   const postedByName = data.postedByName || "[unknown poster]";
 
   const card = document.createElement("div");
