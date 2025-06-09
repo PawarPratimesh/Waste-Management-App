@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waste Post Details</title>
+  <link rel="stylesheet" href="../css/wasteDetails.css" />
+</head>
+<body>
+
+  <div class="left-column">
+    <img id="wasteImage" src="" alt="Waste Image" />
+    <a id="mapBtn" class="map-btn" href="#" target="_blank">View on Map</a>
+  </div>
+
+  <div class="right-column">
+    <div id="status" class="status">Loading...</div>
+
+    <div class="detail"><span>Description:</span> <span id="description"></span></div>
+    <div class="detail"><span>Posted:</span> <span id="timestamp"></span></div>
+    <div class="detail"><span>Posted By:</span> <span id="postedBy"></span></div>
+    <div class="detail"><span>Email:</span> <span id="email"></span></div>
+    <div class="detail"><span>Phone:</span> <span id="phone"></span></div>
+    <div class="detail"><span>Address:</span> <span id="address"></span></div>
+
+    <button id="pickBtn" class="pick-btn">✅ Pick This</button>
+  </div>
+
+  <script type="module" src="../js/wasteDetails.js"></script>
+</body>
+</html>
