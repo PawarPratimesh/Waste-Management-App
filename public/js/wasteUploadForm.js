@@ -84,7 +84,8 @@ form.addEventListener("submit", async (e) => {
     latitude: form.latitude.value || null,
     longitude: form.longitude.value || null,
     timestamp: serverTimestamp(),
-    uid: user.uid,  // Add UID here
+    uid: user.uid,
+    status: "Pending" // ✅ Important: Initial status for tracking
   };
 
   try {

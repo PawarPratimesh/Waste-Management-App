@@ -1,0 +1,112 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#wasteList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Card Design */
+.card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Image inside Card */
+.waste-img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+/* Optional: Fixed height version
+.waste-img {
+  width: 100%;
+  max-width: 250px;
+  height: 180px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+*/
+
+.card h3 {
+  margin: 0 0 8px;
+}
+
+/* Status Styling */
+.status {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.status.available {
+  color: green;
+}
+
+.status.picked {
+  color: red;
+}
+
+/* Recycler info inside picked waste cards */
+.recycler-info {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Map Button */
+.map-btn {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Map Popup Modal */
+#mapPopup {
+  position: fixed;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Close Button in Map (Optional) */
+#closeMapBtn {
+  float: right;
+  background: crimson;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

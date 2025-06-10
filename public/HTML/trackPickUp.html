@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Waste Pickup</title>
+  <link rel="stylesheet" href="../css/trackPickUp.css" />
+
+  <!-- Leaflet for live tracking -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <h1>Track Waste Pickup</h1>
+  <div id="wasteList"></div>
+
+  <!-- Live map popup -->
+  <div id="mapPopup" class="hidden">
+    <h3>Recycler Live Location</h3>
+    <div id="map" style="height: 400px;"></div>
+    <button onclick="closeMap()">Close</button>
+  </div>
+
+  <script type="module" src="../js/trackPickUp.js"></script>
+</body>
+</html>
