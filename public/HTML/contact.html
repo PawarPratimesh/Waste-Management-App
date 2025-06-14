@@ -5,10 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - EcoWaste</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+ 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    
+    (function() {
+      emailjs.init("GtS_EmA4Nbwz7FkcW"); 
+    })();
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
-      
       font-family: 'Poppins', sans-serif;
     }
 
@@ -17,9 +26,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment:fixed;
+      background-attachment: fixed;
       color: #333;
-      
     }
 
     .contact-container {
@@ -38,7 +46,6 @@
 
     .contact-container p {
       font-size: 16px;
-      
     }
 
     .contact-content {
@@ -106,6 +113,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="contact-container">
     <h1>Contact Us</h1>
@@ -127,7 +135,6 @@
         <p><strong>Phone:</strong> +91 98765 43210</p>
         <p><strong>Address:</strong> 123 Green Avenue, Pune, Maharashtra, India</p>
 
-        <!-- Map (Optional) -->
         <div class="map-container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0199051335924!2d73.85674337518164!3d18.524564569969854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c088f2e78cfb%3A0x5f6ffcb45ec1f4ee!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1708331823309"
@@ -141,12 +148,21 @@
   <script>
     function submitContactForm(event) {
       event.preventDefault();
+
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const message = document.getElementById("message").value;
 
-      alert(`Thanks for reaching out, ${name}!\nWe will contact you at ${email} shortly.`);
-      document.querySelector(".contact-form").reset();
+      emailjs.send("service_owmfyej", "template_ku7w9by", {
+        from_name: name,
+        to_email: email,
+        message: message
+      }).then(function(response) {
+        alert(`Thanks for reaching out, ${name}!\nWe’ll contact you at ${email} shortly.`);
+        document.querySelector(".contact-form").reset();
+      }, function(error) {
+        alert("Oops! Something went wrong:\n" + JSON.stringify(error));
+      });
     }
   </script>
 </body>
