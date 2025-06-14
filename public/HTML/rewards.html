@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoWaste - Rewards Center</title>
+  <link rel="stylesheet" href="../css/rewards.css"/>
+</head>
+<body>
+  <div class="rewards-container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Rewards Center</h1>
+      <p>Redeem your eco-points for amazing rewards and make a positive impact!</p>
+    </div>
+
+    <!-- Points Dashboard -->
+    <div class="dashboard-grid">
+      <!-- Total Points -->
+      <div class="points-card primary">
+        <div class="card-header">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span>Total Points</span>
+        </div>
+        <div class="points-value" id="userPoints">1,250</div>
+        <div class="points-subtitle">Available to spend</div>
+      </div>
+
+      <!-- Level Progress -->
+      <div class="points-card">
+        <div class="card-header">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+            <path d="M4 22h16"></path>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+          </svg>
+          <span>Level Progress</span>
+        </div>
+        <div class="level-value">Level 3</div>
+        <div class="level-subtitle">250 points to Level 4</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%"></div>
+        </div>
+      </div>
+
+      <!-- Items Redeemed -->
+      <div class="points-card">
+        <div class="card-header">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20,12 20,22 4,22 4,12"></polyline>
+            <rect width="20" height="5" x="2" y="7"></rect>
+            <line x1="12" x2="12" y1="22" y2="7"></line>
+            <path d="m5 7 1-4h12l1 4"></path>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+          <span>Items Redeemed</span>
+        </div>
+        <div class="stat-value" id="itemsRedeemed">0</div>
+        <div class="stat-subtitle">This month</div>
+      </div>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="search-filter-section">
+      <div class="search-container">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search rewards..." />
+      </div>
+      <div class="filter-container">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46 22,3"></polygon>
+        </svg>
+        <select id="categoryFilter">
+          <option value="All">All Categories</option>
+          <option value="Eco Products">Eco Products</option>
+          <option value="Environmental">Environmental</option>
+          <option value="Gift Cards">Gift Cards</option>
+          <option value="Tech">Tech</option>
+          <option value="Gardening">Gardening</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Rewards Grid -->
+    <div class="rewards-grid" id="rewardsGrid"></div>
+
+    <!-- No Results -->
+    <div class="no-results" id="noResults" style="display: none;">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20,12 20,22 4,22 4,12"></polyline>
+        <rect width="20" height="5" x="2" y="7"></rect>
+        <line x1="12" x2="12" y1="22" y2="7"></line>
+        <path d="m5 7 1-4h12l1 4"></path>
+        <circle cx="12" cy="12" r="2"></circle>
+      </svg>
+      <h3>No rewards found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+
+  <!-- Modals and Scripts -->
+  <div class="modal-overlay" id="redeemModal" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="6"></circle>
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+        </svg>
+        <h2>Confirm Redemption</h2>
+        <p>Are you sure you want to redeem this reward?</p>
+      </div>
+      <div class="reward-preview" id="rewardPreview"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeRedeemModal()">Cancel</button>
+        <button class="btn-primary" onclick="confirmRedeem()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="successModal" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20,6 9,17 4,12"></polyline>
+          </svg>
+        </div>
+        <h2>Redemption Successful!</h2>
+        <p>Your reward has been successfully redeemed.</p>
+      </div>
+      <div class="delivery-info">
+        <div class="delivery-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+            <path d="M15 18H9"></path>
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+            <circle cx="17" cy="18" r="2"></circle>
+            <circle cx="7" cy="18" r="2"></circle>
+          </svg>
+          <span>Delivery Information</span>
+        </div>
+        <h3 id="deliveryItemName">Item Name</h3>
+        <p>Your order will be delivered within <strong>2–3 business days</strong> to your registered address.</p>
+        <p class="tracking-info">You will receive a tracking number via email once your order is shipped.</p>
+      </div>
+      <button class="btn-primary full-width" onclick="closeSuccessModal()">Close</button>
+    </div>
+  </div>
+
+  <script src="../js/rewards.js"></script>
+</body>
+</html>

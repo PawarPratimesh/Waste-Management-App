@@ -1,8 +1,6 @@
 // Import Firestore utilities from your firebase.js setup
 import { db } from "./firebase.js";
 import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-
-// Import Firebase Auth
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 // Get Auth instance
@@ -70,26 +68,42 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  // Get current logged-in user
   const user = auth.currentUser;
   if (!user) {
     alert("You must be logged in to submit waste data.");
     return;
   }
 
+  const wasteType = form.wasteType.value;
+  const pointsByType = {
+    "Plastic": 10,
+    "Organic": 5,
+    "E-Waste": 20,
+    "Metal": 15,
+    "Glass": 12,
+    "Other": 5
+  };
+
   const formData = {
     imageUrl: imageUrlField.value,
     description: form.wasteDescription.value.trim(),
-    wasteType: form.wasteType.value,
+    wasteType: wasteType,
     latitude: form.latitude.value || null,
     longitude: form.longitude.value || null,
     timestamp: serverTimestamp(),
     uid: user.uid,
-    status: "Pending" // ✅ Important: Initial status for tracking
+    status: "Pending"
   };
 
   try {
     await addDoc(collection(db, "wasteUploads"), formData);
+
+    const earnedPoints = pointsByType[wasteType] || 0;
+    localStorage.setItem("lastEarnedPoints", earnedPoints);
+    
+    // Store lastWasteType to trigger point update on rewards dashboard
+    localStorage.setItem("lastWasteType", wasteType);
+
     formMessage.style.color = "green";
     formMessage.innerText = "✅ Waste data submitted successfully!";
     form.reset();

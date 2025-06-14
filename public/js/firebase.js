@@ -1,9 +1,7 @@
-// ✅ Firebase Modular SDK (v9+)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// ✅ Your config
 const firebaseConfig = {
   apiKey: "AIzaSyDHGXaNaIfD10yjuggbe9q-Xzug_pwJuo8",
   authDomain: "waste-management-app-90fa8.firebaseapp.com",
@@ -13,12 +11,9 @@ const firebaseConfig = {
   appId: "1:53803571707:web:361c864857f0e2487e935e"
 };
 
-// ✅ Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
-// ✅ Get Auth and Firestore instances
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// ✅ Export for use in other files
 export { auth, db };

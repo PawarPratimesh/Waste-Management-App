@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #eafff0, #28ad89);
+  background: linear-gradient(to right, #005f4b, #addd65); /* updated to same gradient */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,19 +9,20 @@ body {
 }
 
 .signup-container {
-  background: white;
+  background-color: white;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 400px;
-  max-height: 95vh;
-  overflow-y: hidden;
+  width: 500px; 
+  overflow-y: auto;
+  max-height: 89vh;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #3b5998;
+  color: #022c22; 
+  font-size: 24px;
 }
 
 input[type="tel"],
@@ -35,13 +36,15 @@ select {
   border: 1px solid #a5d6a7;
   border-radius: 8px;
   outline: none;
-  box-sizing: border-box; 
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background-color: #3b5998;
+  background-color: #022c22;
   color: white;
   border: none;
   border-radius: 8px;

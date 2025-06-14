@@ -1,13 +1,9 @@
-/* Responsive Styles */
-
-/* Base responsive adjustments */
 @media (max-width: 1200px) {
   .container {
     max-width: 95%;
   }
 }
 
-/* Tablet Styles */
 @media (max-width: 992px) {
   h1 {
     font-size: 2.2rem;
@@ -29,7 +25,6 @@
   }
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
@@ -97,7 +92,6 @@
   }
 }
 
-/* Small Mobile Styles */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.6rem;
@@ -129,14 +123,12 @@
   }
 }
 
-/* Animation adjustments for smaller screens */
 @media (max-width: 768px) {
   .section {
     animation-duration: 0.5s;
   }
 }
 
-/* Print styles for better printing */
 @media print {
   body {
     background: none;

@@ -21,25 +21,15 @@ body {
 .left-panel {
   width: 50%;
   position: relative;
-  background: linear-gradient(135deg, #eafff0, #28ad89);
+  background: linear-gradient(135deg, #0b5944, #c3e663); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.layer1, .layer2 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.layer1 {
-  background: linear-gradient(135deg, #28ad89, #eafff0);
-  clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
-  z-index: 1;
-}
-
+.layer1,
 .layer2 {
-  background: linear-gradient(135deg, #28ad89, #eafff0);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
-  z-index: 2;
+  display: none;
 }
 
 .cutout {

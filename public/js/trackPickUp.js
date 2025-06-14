@@ -5,7 +5,8 @@ import {
   where,
   getDocs,
   doc,
-  getDoc
+  getDoc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
@@ -25,10 +26,11 @@ onAuthStateChanged(auth, async (user) => {
 
     snap.forEach(async (docSnap) => {
       const data = docSnap.data();
+      const status = data.status || "Pending";
+      const docId = docSnap.id;
+
       const card = document.createElement("div");
       card.className = "card";
-
-      const status = data.status || "Pending";
 
       card.innerHTML = `
         <img src="${data.imageUrl}" alt="Waste Image" class="waste-img"/>
@@ -39,10 +41,11 @@ onAuthStateChanged(auth, async (user) => {
         </p>
         ${status === "Picked" && data.pickedBy ? `<div class="recycler-info">Loading recycler info...</div>` : ""}
         ${status === "Picked" && data.pickedBy ? `<button class="map-btn" onclick="trackLocation('${data.pickedBy}')">📍 Track Recycler on Map</button>` : ""}
+        ${status === "Picked" ? `<button class="complete-btn" onclick="markAsCompleted('${docId}', this)">✅ Mark as Completed</button>` : ""}
       `;
+
       wasteList.appendChild(card);
 
-      // Fetch recycler details if picked
       if (status === "Picked" && data.pickedBy) {
         const recyclerDoc = await getDoc(doc(db, "recyclerFirms", data.pickedBy));
         if (recyclerDoc.exists()) {
@@ -58,6 +61,24 @@ onAuthStateChanged(auth, async (user) => {
     });
   }
 });
+window.markAsCompleted = async function (docId, button) {
+  try {
+    await updateDoc(doc(db, "wasteUploads", docId), {
+      status: "Completed"
+    });
+    alert("Marked as Completed!");
+
+    const statusElement = button.parentElement.querySelector(".status");
+    statusElement.innerHTML = `<strong>Status:</strong> Pickup Completed`;
+    statusElement.classList.remove("picked");
+    statusElement.classList.add("completed");
+
+    button.remove();
+  } catch (error) {
+    console.error("Error updating status:", error);
+    alert("Failed to mark as completed.");
+  }
+};
 
 window.trackLocation = async function (recyclerUid) {
   const locRef = doc(db, "recyclerLocations", recyclerUid);
@@ -84,7 +105,6 @@ window.trackLocation = async function (recyclerUid) {
     marker.setLatLng([lat, lng]);
   }
 
-  // Live update every 10 seconds
   setInterval(async () => {
     const updateSnap = await getDoc(locRef);
     if (updateSnap.exists()) {

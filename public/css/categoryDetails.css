@@ -1,47 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  background: linear-gradient(160deg, #27c29d 0%, #98f5a9 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #2c7a7b;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 h1 {
-  margin-bottom: 20px;
+  font-size: 38px;
+  color: #234e52;
+  text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.tagline {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2c7a7b;
+  margin-top: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.subtext {
+  font-size: 16px;
+  color: #285e61;
+  opacity: 0.85;
+  margin-top: 4px;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(72, 187, 120, 0.3);
+  backdrop-filter: blur(14px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+                    linear-gradient(135deg, #e6fffa, #c6f6d5);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  transition: all 0.35s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.7s forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(72, 187, 120, 0.4), 0 0 14px rgba(129, 230, 217, 0.6);
 }
 
 .card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
 }
 
 .status {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #2f855a;
+  animation: pulse 2s infinite;
 }
 
-.green {
-  color: green;
+.status .dot {
+  width: 10px;
+  height: 10px;
+  background-color: #68d391;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #9ae6b4;
+}
+
+.status .time {
+  font-size: 13px;
+  color: #2c7a7b;
+  display: flex;
+  align-items: center;
+}
+
+.details {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #285e61;
+  margin-bottom: 12px;
+}
+
+.details .icon {
+  margin-right: 6px;
+  color: #2c7a7b;
 }
 
 button {
-  background-color: #007bff;
+  background: linear-gradient(to right, #9ae6b4, #81e6d9);
   border: none;
-  color: white;
-  padding: 8px 12px;
-  margin-top: 10px;
-  border-radius: 6px;
+  color: #234e52;
+  padding: 12px 20px;
+  border-radius: 14px;
   cursor: pointer;
-} 
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 0 10px #81e6d9, 0 0 20px #9ae6b4;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, #b2f5ea, #68d391);
+  transform: scale(1.07);
+  box-shadow: 0 0 16px #68d391, 0 0 30px #c6f6d5;
+}
+
+a {
+  color: #2c7a7b;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #234e52;
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  color: #285e61;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6fffa;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#81e6d9, #68d391);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .card img {
+    height: 160px;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}

@@ -4,18 +4,17 @@ import {
   query,
   where,
   orderBy,
-  getDocs
+  getDocs,
+  doc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// Get selected category from URL query params (e.g. wasteType=Plastic)
 const urlParams = new URLSearchParams(window.location.search);
 const selectedWasteType = urlParams.get("wasteType") || "All";
 
-// Set heading text
 const headingElem = document.getElementById("heading");
 if (headingElem) headingElem.innerText = `${selectedWasteType} Posts`;
 
-// Helper: format timestamp to time ago string
 function timeAgo(date) {
   if (!date) return "Unknown";
   const now = new Date();
@@ -26,12 +25,32 @@ function timeAgo(date) {
   return `${Math.floor(seconds / 86400)}d ago`;
 }
 
-// Create card element for a post
-function createCard(data, id) {
+async function fetchUserInfo(uid) {
+  try {
+    const userDocRef = doc(db, "wasteGenerators", uid);
+    const userDoc = await getDoc(userDocRef);
+    if (userDoc.exists()) {
+      const userInfo = userDoc.data();
+      return {
+        email: userInfo.email || "N/A",
+        contact: userInfo.phone || "N/A"
+      };
+    } else {
+      console.warn("No user found for UID:", uid);
+      return { email: "N/A", contact: "N/A" };
+    }
+  } catch (error) {
+    console.error("Error fetching user info:", error);
+    return { email: "N/A", contact: "N/A" };
+  }
+}
+
+async function createCard(data, id) {
   const status = data.status === "Picked" ? "Picked" : "Available";
-  const timestamp = data.timestamp && data.timestamp.toDate ? data.timestamp.toDate() : null;
+  const timestamp = data.timestamp?.toDate ? data.timestamp.toDate() : null;
   const time = timeAgo(timestamp);
-  const postedByName = data.postedByName || "[unknown poster]";
+
+  const { email, contact } = await fetchUserInfo(data.uid);
 
   const card = document.createElement("div");
   card.className = "card";
@@ -40,17 +59,17 @@ function createCard(data, id) {
     <div class="status ${status === "Picked" ? "red" : "green"}">
       ${status === "Picked" ? "🔴 Picked" : "🟢 Available"} &nbsp; ⏰ ${time}
     </div>
-    <img src="${data.imageUrl || ''}" alt="Waste Image" />
+    <img src="${data.imageUrl || ''}" alt="Waste Image" class="waste-img" />
     <p>📝 ${data.description || "No description"}</p>
-    <p>📍 Lat: ${data.latitude || "N/A"}, Lng: ${data.longitude || "N/A"}</p>
-    <p>👤 Posted by: ${postedByName}</p>
+    <p>♻️ Waste Type: ${data.wasteType}</p>
+    <p>📧 Email: ${email}</p>
+    <p>📞 Contact: ${contact}</p>
     <a href="wasteDetails.html?id=${id}" class="viewBtn">View Details</a>
   `;
 
   return card;
 }
 
-// Load posts by waste type and show cards
 async function loadPosts(type) {
   const container = document.getElementById("cardContainer");
   if (!container) return;
@@ -75,16 +94,15 @@ async function loadPosts(type) {
       return;
     }
 
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const card = createCard(data, doc.id);
+    for (const docSnap of snapshot.docs) {
+      const data = docSnap.data();
+      const card = await createCard(data, docSnap.id);
       container.appendChild(card);
-    });
+    }
   } catch (error) {
     console.error("Error fetching posts:", error);
     container.innerHTML = "<p>Error loading posts.</p>";
   }
 }
 
-// Run on page load
 loadPosts(selectedWasteType);

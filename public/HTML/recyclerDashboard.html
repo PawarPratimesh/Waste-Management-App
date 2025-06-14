@@ -7,50 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/recyclerDashboard.css" />
   <style>
-    .sidebar nav a.active { font-weight: 700; color: #1f3bb3; }
+    .sidebar nav a.active { font-weight: 700 }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="sidebar">
-      <h1>EcoWaste</h1>
+      <h1>RECYCLEAN</h1>
       <nav>
         <a href="#" id="profileLink">Profile</a>
-        <a href="#" class="active">Dashboard</a>
-        <a href="wasteUploadForm.html">Upload Waste</a>
-        <a href="#">Track Pickup</a>
-        <a href="#">Upload History</a>
-        <a href="#">Rewards</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
+        <a href="recyclerDashboard.html" class="active">Dashboard</a>
+        <a href="aboutUs.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
         <a href="wasteAwareness.html">Waste Awareness</a>
       </nav>
     </div>
 
     <div class="main">
       <div class="header">
-        <h2>Welcome Back, Recycler</h2>
+        <h2>Recycler Dashboard – Your Hub in Action</h2>
       </div>
 
       <div class="cards">
         <div class="card">
           <h3>Pickups – Accepted</h3>
-          <p>You have 5 accepted pickups ready for processing.</p>
-        </div>
-
-        <div class="card">
-          <h3>Pickups – Pending</h3>
-          <p>3 pickup requests are waiting for your action.</p>
+          <p>Your active pickups</p><br/>
+          <button class="btn" onclick="window.location.href='acceptedPickups.html'">Pending Pickups</button>
         </div>
 
         <div class="card">
           <h3>Pickups – Completed</h3>
-          <p>Total pickups completed: 28</p>
+          <p>Finished pickups log</p><br/>
+          <button class="btn" onclick="window.location.href='pickupCompleted.html'">Completed Pickups</button>
         </div>
 
         <div class="card">
           <h3>Browse Waste Feed</h3>
-          <p>Explore uploaded waste posts from users in real-time.</p>
+          <p>Discover new waste posts</p><br/>
           <button class="btn" onclick="window.location.href='browseFeedCategories.html'">Browse Feed</button>
         </div>
       </div>

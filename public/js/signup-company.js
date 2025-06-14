@@ -39,11 +39,9 @@ form.addEventListener("submit", async function (e) {
   }
 
   try {
-    // 1. Create user with Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // 2. Save basic user info in `users` collection
     await setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       userType: "recyclerFirm",
@@ -51,7 +49,6 @@ form.addEventListener("submit", async function (e) {
       email
     });
 
-    // 3. Save detailed firm info in `firms` collection
     await setDoc(doc(db, "recyclerFirms", user.uid), {
       uid: user.uid,
       firmName,

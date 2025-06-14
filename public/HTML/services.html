@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Waste Management Services</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('services.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Keeps image fixed while scrolling */
+      color: white;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4); /* Extra soft overlay (optional) */
+      z-index: -1;
+    }
+
+    /* SERVICES SECTION */
+    .services-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .services-section h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .services-section p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .read-more-btn {
+      background-color: transparent;
+      border: 2px solid #ffc107;
+      color: white;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .read-more-btn:hover {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      color: #000;
+      position: relative;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #1a531b;
+    }
+
+    .card p {
+      color: #444;
+    }
+
+    .card::after {
+      content: "➜";
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    /* CLIENT SECTION */
+    .clients-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .clients-section h2 {
+      font-size: 28px;
+      margin-bottom: 50px;
+      color: #f0f0f0;
+    }
+
+    .client-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .client-logos div {
+      background: url('pattern.png') center/cover no-repeat, rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #111;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .client-logos div:hover {
+      transform: scale(1.05);
+    }
+    .myself{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <h2>Waste Services</h2>
+    <p>Lorem Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
+    <button class="read-more-btn">Read More</button>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Garbage Pickup</h3>
+        <p>There Are Many Variations Of Passages Of Lorem Ipsum Available...</p>
+      </div>
+      <div class="card">
+        <h3>Residential Recycling</h3>
+        <p>The Majority Have Suffered Alteration In Some Form, By Injected Humour...</p>
+      </div>
+      <div class="card">
+        <h3>Dumpster Rental</h3>
+        <p>Many Desktop Publishing Packages And Web Page Editors...</p>
+      </div>
+      <div class="card">
+        <h3>Secure Destruction</h3>
+        <p>There Are Many Variations Of Passages Of Lorem Ipsum...</p>
+      </div>
+      <div class="card">
+        <h3>Junk Removal</h3>
+        <p>The Majority Have Suffered Alteration In Some Form...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="clients-section">
+    <h2>Some Of Our Valued Clients</h2>
+    <div class="client-logos">
+      <div>productboard</div>
+      <div>Razorpay</div>
+      <div>RIPPLING</div>
+      <div>Squarespace</div>
+      <div>Segment</div>
+      <div>Amazon</div>
+      <div>EverGreen Schools Group</div>
+      <div>NeatSpace Office Parks</div>
+      <div>Metro Housing Cooperative</div>
+      <div>INTERCOM Industries</div>
+      <div>CleanTech Industries</div>
+      <div>FreshBite Restaurants</div>
+    </div>
+  </section>
+  <footer style="
+  background-color: transparent;
+  color: #ccc;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 60px;
+">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h1><p><strong>We Only Provide Quality Waste Services</strong> <br>Committed to keeping your environment clean and green.</p></h1>
+    <div class="myself">
+        <div><h1>62K</h1><h3>Customers are happy</h3></div>
+        <div><h1>150+</h1><h3>Firms are happy</h3></div>
+        <div><h1>130</h1><h3>Professional Workers</h3></div>
+        <div><h1>32+</h1><h3>Industries Served</h3></div>
+    </div> <br>
+    <p>&copy; 2025 Waste Management Services. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

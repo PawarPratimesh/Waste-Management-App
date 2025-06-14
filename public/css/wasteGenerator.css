@@ -1,10 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-image: url('wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(to right, #005f4b, #addd65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +13,7 @@ body {
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 700px;
+  width: 500px;
   overflow-y: auto;
   max-height: 89vh;
 }

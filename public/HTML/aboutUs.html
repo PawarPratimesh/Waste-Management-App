@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Waste Management | Home</title>
+  <style>
+    :root {
+      --primary-green: #2e7d32;
+      --light-green: #eafff0;
+      --accent-yellow: #f9c74f;
+      --dark-bg: #1b4332;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-green);
+      color: #212529;
+    }
+
+    /* Top Bar and Navbar */
+    .navbar {
+      background: var(--white);
+      color: var(--primary-green);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 2px solid var(--primary-green);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-green);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: var(--primary-green);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: var(--accent-yellow);
+    }
+
+    .pickup-btn {
+      background-color: var(--accent-yellow);
+      color: black;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(to right, #006d3c, #38b000);
+      color: white;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      max-width: 600px;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      background: var(--accent-yellow);
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .hero button:hover {
+      background-color: #ffd60a;
+      transform: scale(1.05);
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+      background: var(--white);
+    }
+
+    .feature-box {
+      flex: 1;
+      min-width: 250px;
+      background-color: var(--light-green);
+      border: 2px solid var(--primary-green);
+      color: var(--dark-bg);
+      font-weight: 500;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+
+    /* About Section */
+    .about-section {
+      display: flex;
+      padding: 40px 20px;
+      background-color: var(--white);
+      color: var(--dark-bg);
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .leader-content {
+      max-width: 600px;
+    }
+
+    .leader-content h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .leader-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .progress-container {
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+
+    .progress-bar {
+      background: #ccc;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: var(--primary-green);
+      border-radius: 4px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-bg);
+      color: var(--light-green);
+      font-weight: bolder;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">RECYCLEAN</div>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Waste Management<br>Dumpster Rentals<br>Garbage Pickup.</h1>
+      <button>Get Started</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-box">
+      <h3>Dumpster Sizes</h3>
+      <p>Choose from 10 to 40-yard containers for cleanouts, renovations, or major construction.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Waste Collection</h3>
+      <p>Residential, commercial, and on-demand services with eco-friendly sorting and disposal.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Pickup Schedule</h3>
+      <p>Flexible weekly, bi-weekly, or urgent pickup options to suit your needs.</p>
+    </div>
+  </section>
+
+  <!-- About Us / Leadership Section -->
+  <section class="about-section">
+    <div class="leader-content">
+      <h2>We’re Leader In Waste Management Services</h2>
+      <p>
+        Our innovative technologies and practices optimize waste management processes and reduce environmental impact. We explore advanced recycling, smart sorting, and sustainable strategies to lead the change.
+      </p>
+
+      <div class="progress-container">
+        <div class="progress-label">
+          <span>Recycling</span>
+          <span>77%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 77%;"></div>
+        </div>
+
+        <div class="progress-label">
+          <span>Waste Services</span>
+          <span>90%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Recyclean | Clean Future, Greener Earth
+  </footer>
+
+</body>
+</html>

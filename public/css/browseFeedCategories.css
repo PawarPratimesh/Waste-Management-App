@@ -1,94 +1,149 @@
-/* General reset & layout */
+/* ===== Base Styles ===== */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f5f8ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  min-height: 100vh;
+  color: #2e7d32;
+  padding: 20px;
 }
 
-/* Main container */
 .container {
   max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
+  margin: 0 auto;
   text-align: center;
 }
 
-/* Page heading */
 h1 {
-  font-size: 2rem;
-  color: #1a1a1a;
-  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #1b5e20;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
 }
 
-/* Category grid - exactly 3 per row */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #8bc34a;
+  border-radius: 2px;
+}
+
+/* ===== Category Grid ===== */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* Fix to 3 cards per row */
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   justify-items: center;
+  padding: 20px;
 }
 
-/* Individual cards */
+/* ===== Category Cards ===== */
 .category-card {
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  padding: 30px 20px;
-  width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 30px 25px;
+  width: 100%;
   max-width: 300px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top: 5px solid;
 }
 
-/* Hover effect */
 .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-/* Icon styling */
 .category-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
+  width: 120px; /* increased from 90px */
+  height: 120px; /* increased from 90px */
+  object-fit: cover; /* changed from 'contain' to fill the box */
+  margin-bottom: 20px;
+  border-radius: 15px; /* ⬅️ this adds rounded corners */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-/* Category title */
 .category-card h2 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 5px;
+  font-size: 1.5rem;
+  color: #1b5e20;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
-/* Post count */
 .category-card p {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+  color: #7cb342;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* Browse button */
+/* ===== Browse Button ===== */
 .browse-btn {
-  background-color: #3366ff;
+  background-color: #2e7d32;
   color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 12px 30px;
+  border-radius: 30px;
   text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
 }
 
 .browse-btn:hover {
-  background-color: #234be0;
+  background-color: #1b5e20;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(27, 94, 32, 0.4);
 }
 
-/* Optional different background colors */
-.plastic { background: #e1f3ff; }
-.organic { background: #e4ffe1; }
-.ewaste  { background: #fff3e1; }
-.metal   { background: #e1e9ff; }
-.glass   { background: #e1f6ff; }
-.other   { background: #f1e1ff; }
+/* ===== Category Colors ===== */
+.plastic { 
+  border-top-color: #2196F3;
+}
+.organic { 
+  border-top-color: #4CAF50;
+}
+.ewaste { 
+  border-top-color: #FF9800;
+}
+.metal { 
+  border-top-color: #607D8B;
+}
+.glass { 
+  border-top-color: #00BCD4;
+}
+.other { 
+  border-top-color: #9C27B0;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-card {
+    padding: 25px 20px;
+  }
+  
+  .category-card img {
+    width: 70px;
+    height: 70px;
+  }
+}

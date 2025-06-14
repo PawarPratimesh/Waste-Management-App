@@ -6,64 +6,104 @@
   <title>Recycler Profile</title>
   <link rel="stylesheet" href="../css/recyclerProfile.css">
   <style>
-    .profile-summary {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 40px auto;
+    body {
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #046d63, #a8e063);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .main {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-summary {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 30px 30px 120px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      max-width: 800px;
+      width: 100%;
+      margin-top: 100px;
+      position: relative;
+    }
+
+    .profile-summary::before {
+      content: "";
+      background: url('https://cdn-icons-png.flaticon.com/512/3177/3177440.png') no-repeat center;
+      background-size: cover;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: -50px;
+      left: 30px;
+      border: 5px solid #f2f2f2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background-color: #f6fff9;
     }
 
     .profile-summary h2 {
-      text-align: center;
-      margin-bottom: 25px;
+      text-align: left;
+      margin-bottom: 30px;
       font-size: 24px;
       color: #033f3f;
+      margin-left: 0;
     }
 
     .profile-row {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      border-bottom: 1px dashed #ccc;
-      padding-bottom: 8px;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      background-color: #ecf9f0;
+      border-radius: 8px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .label {
       font-weight: bold;
-      color: #333;
+      color: #222;
       flex: 1;
+      text-align: left;
     }
 
     .value {
       flex: 2;
-      color: #555;
+      color: #333;
+      text-align: left;
     }
 
     .back-btn {
       display: block;
-      margin: 30px auto 0;
+      margin: 35px auto 0;
       padding: 10px 30px;
       background-color: #033f3f;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
-      text-align: center;
+      transition: background-color 0.3s ease;
     }
 
     .back-btn:hover {
       background-color: #025e5e;
     }
+
   </style>
 </head>
 <body>
   <div class="main">
     <div class="profile-summary">
-      <h2>You are a Recycler</h2>
+      <h2>Profile: Recycling Firm</h2>
 
       <div class="profile-row"><span class="label">Company Name:</span> <span class="value" id="firmName">Loading...</span></div>
       <div class="profile-row"><span class="label">Contact Person:</span> <span class="value" id="contactPerson">Loading...</span></div>
@@ -74,11 +114,10 @@
       <div class="profile-row"><span class="label">Operating Hours:</span> <span class="value" id="operatingHours">Loading...</span></div>
       <div class="profile-row"><span class="label">Waste Types:</span> <span class="value" id="wasteTypes">Loading...</span></div>
 
-      <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+      <button class="back-btn" onclick="window.location.href='recyclerDashboard.html'">← Back to Dashboard</button>
     </div>
   </div>
 
-  <!-- JS to Load Recycler Info (View Mode) -->
   <script type="module">
     import { auth, db } from "../js/firebase.js";
     import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";

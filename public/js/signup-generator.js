@@ -13,7 +13,6 @@ const form = document.getElementById("signupForm");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Get form values
   const firstName = document.getElementById("firstName").value.trim();
   const lastName = document.getElementById("lastName").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -26,7 +25,6 @@ form.addEventListener("submit", async (e) => {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
 
-  // Basic validation
   if (password !== confirmPassword) {
     alert("❌ Passwords do not match.");
     return;
@@ -38,11 +36,9 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    // Create user with Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Save basic info in 'users' collection
     await setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       userType: "wasteGenerator",
@@ -50,7 +46,6 @@ form.addEventListener("submit", async (e) => {
       email
     });
 
-    // Save extended info in 'wasteGenerators' collection
     await setDoc(doc(db, "wasteGenerators", user.uid), {
       uid: user.uid,
       firstName,

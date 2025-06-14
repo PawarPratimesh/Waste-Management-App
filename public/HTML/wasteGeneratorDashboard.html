@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/wasteGeneratorDashboard.css" />
   <style>
-    .sidebar nav a.active { font-weight: 700; color: #1f3bb3; }
+    .sidebar nav a.active { font-weight: 700 }
   </style>
 </head>
 <body>
@@ -16,44 +16,34 @@
       <h1>EcoWaste</h1>
       <nav>
         <a href="#" id="profileLink">Profile</a>
-        <a href="#" class="active">Dashboard</a>
-        <a href="wasteUploadForm.html">Upload Waste</a>
-        <a href="#">Track Pickup</a>
-        <a href="#">Upload History</a>
-        <a href="#">Rewards</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
+        <a href="wasteGeneratorDashboard.html" class="active">Dashboard</a>
+        <a href="aboutUs.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
         <a href="wasteAwareness.html">Waste Awareness</a>
       </nav>
     </div>
-
     <div class="main">
       <div class="header">
-        <h2>Welcome Back, Generator</h2>
+        <h2>Generator Dashboard – Track Your Submissions</h2>
       </div>
 
       <div class="cards">
         <div class="card">
           <h3>Upload Waste</h3>
-          <p>Quickly add a new waste item for pickup or recycling.</p>
+          <p>Add a new waste item for pickup or recycling.</p><br/>
           <button class="btn" onclick="window.location.href='wasteUploadForm.html'">Upload Waste</button>
         </div>
 
         <div class="card">
           <h3>Track Waste Pickup</h3>
-          <p>Status: <strong>Pending / Accepted / Picked</strong></p>
+          <p><strong>Pending/ Picked/ Completed</strong></p><br/>
           <button class="btn" onclick="window.location.href='trackPickUp.html'">See Status</button>
         </div>
 
         <div class="card">
-          <h3>Past Uploads</h3>
-          <p>View your history of waste submissions.</p>
-        </div>
-
-        <div class="card">
           <h3>Reward Summary</h3>
-          <p>Total Points: <strong>120</strong></p>
-          <button class="btn">Redeem Now</button>
+          <p><strong>Claim your eco-treat </strong></p><br/>
+          <button class="btn" onclick="window.location.href='rewards.html'">Claim your eco-treat</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-/* Reset and base */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +17,6 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar styling */
 .sidebar {
   background: #00695c;
   width: 260px;
@@ -34,7 +32,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  user-select: none; /* prevent accidental selection */
+  user-select: none; 
 }
 .sidebar h1 {
   font-size: 26px;
@@ -64,7 +62,6 @@ body {
   box-shadow: inset 5px 0 0 0 #26a69a;
 }
 
-/* Main content styling */
 .main {
   flex: 1;
   padding: 30px 40px;
@@ -75,7 +72,6 @@ body {
   box-shadow: -2px 0 10px rgba(0,0,0,0.05);
 }
 
-/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -107,7 +103,6 @@ body {
   outline: none;
 }
 
-/* Cards container */
 .cards {
   display: flex;
   gap: 20px;
@@ -135,7 +130,6 @@ body {
   user-select: none;
 }
 
-/* Sections styling */
 .section {
   background: #fff;
   padding: 25px;
@@ -149,7 +143,6 @@ body {
   user-select: none;
 }
 
-/* Inputs and forms */
 input, textarea, select {
   padding: 12px 15px;
   margin: 10px 0;
@@ -167,7 +160,6 @@ input:focus, textarea:focus, select:focus {
   outline: none;
 }
 
-/* Lists */
 ul {
   list-style: inside disc;
   padding-left: 20px;
@@ -179,7 +171,6 @@ ul li {
   user-select: text;
 }
 
-/* Responsive tweaks */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;

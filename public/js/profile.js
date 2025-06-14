@@ -25,7 +25,6 @@ function saveUserProfile() {
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
   
-    // Role-specific fields
     if (role === "generator") {
       profileData.wasteType = document.getElementById("wasteType").value.trim();
       profileData.quantity = parseFloat(document.getElementById("quantity").value);
@@ -34,11 +33,10 @@ function saveUserProfile() {
       profileData.capacity = parseFloat(document.getElementById("capacity").value);
     }
   
-    // Save to Firestore under 'profiles' collection
     firebase.firestore().collection("profiles").doc(user.uid).set(profileData)
       .then(() => {
         alert("Profile saved successfully!");
-        window.location.href = "dashboard.html"; // Redirect to dashboard
+        window.location.href = "dashboard.html"; 
       })
       .catch((error) => {
         console.error("Error saving profile:", error);

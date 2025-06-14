@@ -10,7 +10,6 @@ import {
   setDoc
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// 📍 Format timestamp nicely
 function timeAgo(date) {
   if (!date) return "Unknown";
   const now = new Date();
@@ -21,7 +20,6 @@ function timeAgo(date) {
   return `${Math.floor(seconds / 86400)}d ago`;
 }
 
-// 🟢 Share live location (recycler)
 function startSharingLiveLocation(recyclerUID) {
   if (!navigator.geolocation) {
     alert("Geolocation not supported");
@@ -43,7 +41,6 @@ function startSharingLiveLocation(recyclerUID) {
   );
 }
 
-// 🔄 Load post details
 async function loadWasteDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const docId = urlParams.get("id");
@@ -62,18 +59,15 @@ async function loadWasteDetails() {
 
     const data = docSnap.data();
 
-    // Fill image & description
     document.getElementById("wasteImage").src = data.imageUrl || "";
     document.getElementById("description").innerText = data.description || "No description";
     const timestamp = data.timestamp?.toDate?.() || null;
     document.getElementById("timestamp").innerText = timeAgo(timestamp);
 
-    // Map link
     if (data.latitude && data.longitude) {
       document.getElementById("mapBtn").href = `https://www.google.com/maps?q=${data.latitude},${data.longitude}`;
     }
 
-    // Status
     const statusElem = document.getElementById("status");
     const btn = document.getElementById("pickBtn");
 
@@ -89,7 +83,6 @@ async function loadWasteDetails() {
       btn.innerText = "✅ Pick This";
     }
 
-    // 🙋‍♂️ Posted by details
     const postedByUid = data.uid;
     const userDoc = await getDoc(doc(db, "users", postedByUid));
 
@@ -101,7 +94,6 @@ async function loadWasteDetails() {
         const genSnap = await getDocs(genQuery);
         if (!genSnap.empty) {
           const g = genSnap.docs[0].data();
-          document.getElementById("postedBy").innerText = g.name || "Unknown";
           document.getElementById("email").innerText = g.email || "N/A";
           document.getElementById("phone").innerText = g.phone || "N/A";
           document.getElementById("address").innerText = g.address || "N/A";
@@ -111,17 +103,13 @@ async function loadWasteDetails() {
         const firmSnap = await getDocs(firmQuery);
         if (!firmSnap.empty) {
           const f = firmSnap.docs[0].data();
-          document.getElementById("postedBy").innerText = f.contactPerson || "Unknown";
           document.getElementById("email").innerText = f.email || "N/A";
           document.getElementById("phone").innerText = f.phone || "N/A";
           document.getElementById("address").innerText = f.address || "N/A";
         }
       }
-    } else {
-      document.getElementById("postedBy").innerText = "Unknown";
-    }
+    } 
 
-    // 🛠 Pick button logic
     btn.onclick = async () => {
       if (confirm("Mark this waste as picked?")) {
         try {
@@ -139,7 +127,7 @@ async function loadWasteDetails() {
 
           alert("Marked as Picked. Starting location sharing...");
           startSharingLiveLocation(currentUser.uid);
-          loadWasteDetails(); // reload UI
+          loadWasteDetails(); 
         } catch (err) {
           alert("Error updating status: " + err.message);
         }
